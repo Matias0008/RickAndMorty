@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Rubik&family=Yomogi&display=swap');
+
+
 
 * {
     padding: 0;
@@ -14,14 +17,8 @@ body {
 }
 
 .contenedor-titulo {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 6rem;
-    background-color: white;
+
+    background-color: #18123F;
 }
 
 .titulo {
@@ -41,12 +38,16 @@ body {
 }
 
 .contenedor-general {
-    background-color: rgb(36, 40, 47);
+    background-color: #0C0920;
     min-height: 75vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.pagination {
+    background-color: #0C0920;
 }
 
 .contenedor-card {
@@ -62,10 +63,10 @@ body {
 }
 
 .card {
-    background-color: rgb(60, 62, 68);
+    background-color: #191240;
     border-radius: 0.5rem;
     margin: 10px auto;
-    box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px, rgb(0 0 0 / 6%) 0px 2px 4px -1px
+    box-shadow: #191240 0px 4px 6px -1px, #191240 0px 2px 4px -1px
 }
 
 .card-title {
@@ -75,7 +76,7 @@ body {
 }
 
 .card-text {
-    color: rgb(158, 158, 158);
+    color: #C6BDEF;
 
 }
 
@@ -100,11 +101,6 @@ p {
     object-fit: cover;
     pointer-events: none;
 }
-
-section {
-    margin-bottom: 10px;
-}
-
 p { margin-bottom: 0;}
 .nombre {
     font-size: 2rem;
@@ -133,24 +129,37 @@ p { margin-bottom: 0;}
 }
 
 
+.sec-arriba {
+    margin-bottom: 20px;
+}
+
+
+.general-desc {
+    font-family: 'Yomogi', cursive;
+}
+
 .fondo-rick {
     background-image: url(.//imagen.png);
     background-position: center;
     background-size: cover;
 }
 
-.hero-image {
+.col-img {
+    padding-left: 0;
+}
+
+/* .hero-image {
     position: absolute;
     width: 100%;
     height: 320px;
-}
+} */
 
-.herosvg {
+/* .herosvg {
     width: 100%;
     height: 100%;
     fill: rgb(245, 245, 245);
     overflow: hidden;
-}
+} */
 
 .icono-github {
     color: white;
@@ -160,6 +169,22 @@ p { margin-bottom: 0;}
 .icono-github:hover{
     color: black;
 }
+
+
+.img-desc {
+    max-width: 350px;
+    max-height: 378px;
+}
+
+.col-char {
+    margin: 50px;
+}
+
+.card-footer {
+    border-top: none;
+    background-color: #191240;
+}
+
 
 @media screen and (max-width: 768px){
     .card {
@@ -175,5 +200,11 @@ p { margin-bottom: 0;}
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .img-desc {
+        max-width: 250px;
     }
 }

@@ -16,7 +16,7 @@ const mostrar_error = () => {
     document.getElementById('prev').remove();
     document.getElementById('next').remove();
     let html = `
-            <div class="col-xxl-4 col-lg-12 col-md-12 flex-grow-1 ">
+            <div class="col-xxl-4 col-lg-12 col-md-12 flex-grow-1 justify-content-center align-items-center">
             <div class="card mb-3">
                 <div class="row g-0" style="align-items: center;">
 
@@ -47,6 +47,7 @@ const mostrar_error = () => {
 
 function buscar() {
     let a_buscar = document.getElementById('search').value;
+    console.log(a_buscar)
     let API = `https://rickandmortyapi.com/api/character/?name=${a_buscar}`;
     getData(API)
 }
@@ -77,44 +78,42 @@ const printData = (data) => {
         firstSeen = capitalize(c.episode[0].slice(32).replace('/', ' '))
 
         html += `
-            <div class="col-xxl-4 col-lg-12 col-md-12 flex-grow-1 ">
-            <div class="card mb-3">
-                <div class="row g-0" style="align-items: center;">
+        <div class="col-xxl-4 col-md-12 col-lg-6 flex-grow-1">
+            <div class="card h-100" style="width: 400px;">
 
-                        <div class="col-md-4" style="height: 250px;">
-                            <img src="${c.image}" class="img-fluid rounded-start img-img" alt="...">
-                        </div>
-
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <section>
-                                    <h2 class="card-title">${c.name}</h2>
-                                    <div class="status d-flex align-items-center">
-                                        <span class="section__icon" style="${styleStatus}">
-                                        </span>
-
-                                        <p style="color: white;">${capitalize(c.status)} - ${c.species}</p>
-
-                                    </div>
-
-
-                                </section>
-
-                                <section>                              
-                                    <p class="card-text">Last known location:</p>
-                                    <p class="card-info">${c.location.name}</p>
-                                </section>
-
-                                <section class="cta">
-                                    <p class="card-text">First seen in:</p>
-                                    <p class="card-info" id="info">${firstSeen}</p>
-                                </section>
-
-                            </div>
-                        </div>
+                <div class="imagen text-center">
+                    <img src="${c.image}" class="card-img-top" alt="..." style="max-width: 250px; border-radius: 50%; margin: 20px; box-shadow: #060410 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;">
                 </div>
+
+                <div class="card-body">
+            
+                    <section class='sec-arriba'>
+                        <h2 class="card-title">${c.name}</h2>
+                        <div class="status d-flex align-items-center">
+                            <span class="section__icon" style="${styleStatus}">
+                            </span>
+
+                            <p style="color: white;">${capitalize(c.status)} - ${c.species}</p>
+
+                        </div>
+                    </section>
+
+                    <section>                              
+                            <p class="card-text">Last known location:</p>
+                            <p class="card-info">${capitalize(c.location.name)}</p>
+                    </section>
+
+                </div>
+
+                <div class="card-footer">
+                        <p class="card-text">First seen in:</p>
+                        <p class='card-info'>${firstSeen}</p>
+                </div>
+
             </div>
-    </div>
+
+        </div>
+            
         `
 
 
@@ -127,12 +126,15 @@ const printData = (data) => {
 const pagination = (info) => {
 
     let preDisabled = info.prev == null ? 'disabled' : ''
+    let aDisabled = info.prev == null ? 'pointer-events: none;' : ''
+
     let nextDisabled = info.next == null ? 'disabled' : ''
+    let aNext = info.next == null ? 'pointer-events: none;' : ''
     let textoCount = info.count > 1 ? 'results' : 'result'
 
-    let html = `<h1 style="color: #f4f6ff; margin: 10px;" id='count'>${info.count} ${textoCount}</h1>`
-    html += `<a onclick="getData('${info.prev}')" id='prev'><button type="button" id='prev' class="btn btn-secondary btn-lg ${preDisabled}" style="margin-right: 15px;">Previous</button></a>`
-    html += `<a onclick="getData('${info.next}')" id='next' <button type="button" class="btn btn-primary btn-lg ${nextDisabled}" id='next' >Next</button></a>`
+    let html = `<h1 style="color: #f4f6ff;" id='count' >${info.count} ${textoCount}</h1>`
+    html += `<a onclick="getData('${info.prev}')" style="${aDisabled}" id='prev'><button type="button" id='prev' class="btn btn-secondary btn-lg ${preDisabled}" style="margin-right: 15px;">Previous</button></a>`
+    html += `<a onclick="getData('${info.next}')" style="${aNext}" id='next' <button type="button" class="btn btn-primary btn-lg ${nextDisabled}" id='next' >Next</button></a>`
 
     document.getElementById('buttons').innerHTML = html
 }
